@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import Radium from 'radium';
 
+import JobList from './jobList';
+
 const styles = {
   buttonStyles: {
     borderRadius: 10,
@@ -23,7 +25,9 @@ class Home extends Component {
     return (
       <div>
         <div style={styles.containerStyle}>
-          <h4 style={{lineHeight: 2, fontSize: 20, textAlign: 'center'}}>Searching for great employees? Post a job for free to reach thousands of ecommerce workers.</h4>
+          <h4 style={{lineHeight: 2, fontSize: 20, textAlign: 'center'}}>
+            Searching for great employees? Post a job to reach thousands of ecommerce workers.
+          </h4>
           <FlatButton
             className='post-job-btn'
             label='Post Jobs'
@@ -33,6 +37,7 @@ class Home extends Component {
             style={styles.buttonStyles}
           />
         </div>
+        <JobList />
       </div>
     )
   }
