@@ -7,7 +7,7 @@ import loadingGif from '../images/loader.gif';
 
 import { fetchJobs } from '../actions/index';
 
-let jobNum = 10;
+let jobNum = 5;
 
 class JobList extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class JobList extends Component {
     const { jobs } = this.props;
       let jobCards = jobs.map((job, i) => {
         return (
-          <JobCard key={i} data={job} />
+          <JobCard key={i} id={i} job={job}/>
         )
       })
 
@@ -26,10 +26,10 @@ class JobList extends Component {
   }
 
   loadMoreJobs() {
-    if(!this.props.loading) {
+    /*if(!this.props.loading) {
       jobNum +=10
       this.props.fetchJobs(jobNum);
-    }
+    } */
   }
 
   render() {

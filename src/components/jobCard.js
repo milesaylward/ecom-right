@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Radium from 'radium';
 
 class JobCard extends Component {
 
   renderTags = (style) => {
-    const { tags } = this.props.data;
+    const { tags } = this.props.jobs;
     if(tags) {
         let tagButton = tags.map((tag, i) => {
           return (
@@ -20,23 +22,27 @@ class JobCard extends Component {
   }
 
   tagClick = (tag) => {
-    console.log(tag);
+    //console.log(tag);
   }
 
   render() {
-    const { cardStyle, titleStyle, chipStyle } = styles;
-    const { Title, Posted } = this.props.data
+
+    const { Title, Posted } = this.props.job;
+    const { id } = this.props;
+    const {cardStyle, chipStyle, titleStyle } = styles;
     return (
-      <div style={cardStyle}>
-        <div>
-          <p style={titleStyle}>{Title}</p>
-          <p>Company Name</p>
+      <Link to={`jobs/${id}/${Title}`} >
+        <div style={cardStyle}>
+          <div>
+            <p style={titleStyle}>{Title}</p>
+            <p>Company Name</p>
+          </div>
+          <div style={{display: 'flex'}}>
+            {this.renderTags(chipStyle)}
+          </div>
+          <p>{Posted}</p>
         </div>
-        <div style={{display: 'flex'}}>
-          {this.renderTags(chipStyle)}
-        </div>
-        <p>{Posted}</p>
-      </div>
+      </Link>
     )
   }
 }
@@ -75,4 +81,10 @@ const styles = {
   }
 }
 
-export default Radium(JobCard);
+const mapStateToProps = state => {
+  const { jobs } = state.jobs
+
+  return { jobs }
+}
+
+export default connect(mapStateToProps)(Radium(JobCard));

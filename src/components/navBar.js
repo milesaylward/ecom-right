@@ -52,7 +52,7 @@ class NavBar extends Component {
     const { data } = this.props;
     let links = data.map((route, index) => {
       return (
-        <Link to={route} key={index} title={`Ecom Right | ${route}`}>
+        <Link to={`/${route}`} key={index} title={`Ecom Right | ${route}`}>
           <IconButton
             tooltip={route}
             tooltipStyles={{marginLeft: 10}}

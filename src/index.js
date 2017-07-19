@@ -6,6 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import store, { history } from './store'
 import App from './components/App';
+import Routes from './routes';
 import registerServiceWorker from './registerServiceWorker';
 injectTapEventPlugin();
 
@@ -15,7 +16,9 @@ render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <MuiThemeProvider>
-        <App />
+        <App>
+          <Routes />
+        </App>
       </MuiThemeProvider>
     </ConnectedRouter>
   </Provider>,

@@ -1,19 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const JobPage = (props) => {
-  return (
-    <div>
-      Hello, {props.pageName}
-      {
-        props.pageName === "Development"
-        ?
-        <h1>Welcome to Dev</h1>
-        :
-        <h1>I dont know where you are</h1>
-
-      }
-    </div>
-  )
+class JobPage extends Component{
+  render() {
+    const { pageName } = this.props.match.params
+    return (
+      <div>
+        Hello, {pageName}
+      </div>
+    )
+  }
 }
 
 export default JobPage
